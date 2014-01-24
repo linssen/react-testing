@@ -64,6 +64,13 @@ module.exports = function (grunt) {
         concat: {
             scripts: {
                 files: scripts
+            },
+            test: {
+                files: {
+                    'src/static/scripts/dist/<%= pkg.name %>.js': scripts['src/static/scripts/dist/<%= pkg.name %>.js'].filter(function (d) {
+                        return d.substr(0, 34) !== 'src/static/bower_components/react/';
+                    })
+                }
             }
         },
         react: {
@@ -71,6 +78,11 @@ module.exports = function (grunt) {
                 files: {
                     'src/static/scripts/dist/<%= pkg.name %>.jsx.js': 'src/static/components/**/*.jsx'
                 }
+            }
+        },
+        karma: {
+            unit: {
+                configFile: 'src/static/test/karma.conf.js'
             }
         }
 
@@ -81,7 +93,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-react');
+    grunt.loadNpmTasks('grunt-karma');
 
     grunt.registerTask('default', ['sass:dist', 'react', 'uglify']);
+    grunt.registerTask('test', ['react', 'karma']);
 
 };
