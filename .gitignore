@@ -5,3 +5,4 @@ node_modules
 .sass-cache
 *.egg-info
 src/static/*/dist
+src/static/bower_components

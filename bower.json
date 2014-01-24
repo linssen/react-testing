@@ -1,6 +1,10 @@
 {
   "name": "react-tutorial",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "react": "~0.8.0",
+    "showdown": "~0.3.1",
+    "jquery": "~2.0.3"
+  },
   "devDependencies": {}
 }

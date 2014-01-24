@@ -5,8 +5,10 @@ module.exports = function (grunt) {
 
     scripts = {
         'src/static/scripts/dist/<%= pkg.name %>.js': [
-            'src/static/bower_components/d3/d3.js',
-            'src/static/bower_components/topojson/topojson.js',
+            'src/static/bower_components/jquery/jquery.js',
+            'src/static/bower_components/react/react.js',
+            'src/static/bower_components/react/JSXTransformer.js',
+            'src/static/bower_components/showdown/src/showdown.js',
             'src/static/scripts/**/*.js',
             '!src/static/scripts/dist/<%= pkg.name %>.js'
         ]
