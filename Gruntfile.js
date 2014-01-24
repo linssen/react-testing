@@ -10,6 +10,7 @@ module.exports = function (grunt) {
             'src/static/bower_components/react/JSXTransformer.js',
             'src/static/bower_components/showdown/src/showdown.js',
             'src/static/scripts/**/*.js',
+            'src/static/scripts/dist/*.jsx.js',
             '!src/static/scripts/dist/<%= pkg.name %>.js'
         ]
     };
@@ -28,9 +29,10 @@ module.exports = function (grunt) {
             scripts: {
                 files: [
                     'src/static/scripts/**/*.js',
+                    'src/static/components/**/*.jsx',
                     '!src/static/scripts/dist/*.js'
                 ],
-                tasks: ['concat']
+                tasks: ['react', 'concat']
             },
             styles: {
                 files: [
@@ -63,6 +65,13 @@ module.exports = function (grunt) {
             scripts: {
                 files: scripts
             }
+        },
+        react: {
+            dist: {
+                files: {
+                    'src/static/scripts/dist/<%= pkg.name %>.jsx.js': 'src/static/components/**/*.jsx'
+                }
+            }
         }
 
     });
@@ -71,7 +80,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-react');
 
-    grunt.registerTask('default', ['sass:dist', 'uglify']);
+    grunt.registerTask('default', ['sass:dist', 'react', 'uglify']);
 
 };
