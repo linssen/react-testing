@@ -11,3 +11,10 @@ describe('Comments', function () {
         expect(true).toBe(true);
     });
 });
+
+(function (document, undefined) {
+    var content;
+    content = document.createElement('div');
+    content.id = 'content';
+    document.body.appendChild(content);
+}(document));
