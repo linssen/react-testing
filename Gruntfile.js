@@ -3,17 +3,14 @@ module.exports = function (grunt) {
 
     var scripts;
 
-    scripts = {
-        'src/static/scripts/dist/<%= pkg.name %>.js': [
-            'src/static/bower_components/jquery/jquery.js',
-            'src/static/bower_components/react/react.js',
-            'src/static/bower_components/react/JSXTransformer.js',
-            'src/static/bower_components/showdown/src/showdown.js',
-            'src/static/scripts/**/*.js',
-            'src/static/scripts/dist/*.jsx.js',
-            '!src/static/scripts/dist/<%= pkg.name %>.js'
-        ]
-    };
+    scripts = {'src/static/scripts/dist/<%= pkg.name %>.js': [
+        'src/static/bower_components/jquery/jquery.js',
+        'src/static/bower_components/react/react.js',
+        'src/static/bower_components/showdown/src/showdown.js',
+        'src/static/scripts/**/*.js',
+        'src/static/scripts/dist/*.jsx.js',
+        '!src/static/scripts/dist/<%= pkg.name %>.js'
+    ]};
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
