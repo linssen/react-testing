@@ -66,9 +66,9 @@ module.exports = function (grunt) {
                 files: scripts
             },
             test: {
-                files: {
-                    'src/static/scripts/dist/<%= pkg.name %>.js': scripts['src/static/scripts/dist/<%= pkg.name %>.js'].filter(function (d) {
-                        return d.substr(0, 34) !== 'src/static/bower_components/react/';
+                files: {'src/static/scripts/dist/<%= pkg.name %>.js':
+                    scripts['src/static/scripts/dist/<%= pkg.name %>.js'].map(function (d) {
+                        return d.replace(/react.js$/, 'react-with-addons.js');
                     })
                 }
             }
@@ -96,6 +96,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-karma');
 
     grunt.registerTask('default', ['sass:dist', 'react', 'uglify']);
-    grunt.registerTask('test', ['react', 'karma']);
+    grunt.registerTask('test', ['react', 'concat:test', 'karma']);
 
 };
